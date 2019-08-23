@@ -1,0 +1,21 @@
+First, The GROUP BY clause is used to group rows into aggregated "summary" rows that have equal values. For instanc eyou would use it
+   to return the amount of clients per city in a DB: 
+   
+                SELECT COUNT(exampledb.client_id), client_city 
+                FROM exampledb 
+                GROUP BY client_city;
+              
+The HAVING clause is used to apply an additional argument or condition to the selected set which generally has been grouped. More important,
+however, the HAVING clause allows us to utilize functions for conditions as opposed to the WHERE clause:
+
+                SELECT COUNT(exampledb.client_id), client_city 
+                FROM exampledb GROUP BY client_city 
+                HAVING COUNT(exampledb.client_id > 5);
+                
+Finally, the ORDER BY clause is just used to sort the result set by ascending or descending order:
+
+                SELECT COUNT(exampledb.client_id), client_city 
+                FROM exampledb 
+                GROUP BY client_city 
+                HAVING COUNT(exampledb.client_id > 5) 
+                ORDER BY COUNT(exampledb.client_id) DESC;
